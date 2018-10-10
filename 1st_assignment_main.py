@@ -18,6 +18,48 @@ class myCar(object):
     def drive_parking(self):
         self.car.drive_parking()
 
+    def move_front(self):
+        self.car.accelerator.go_forward(self.car.FASTER)
+
+    def move_back(self):
+        self.car.accelerator.go_backward(self.car.FASTER)
+
+    def stop(self):
+        self.car.accelerator.stop()
+
+    def get_distance(self):
+        sum = 0
+        for i in range(5):
+            sum += self.car.distance_detector.get_distance()
+        return sum / 5
+
+    def assign(self):
+        try:
+            goal = 10
+            start_pos = self.get_distance()
+
+            # move front
+            print("move front!")
+            while True:
+                if self.get_distance() < goal:
+                    break
+            
+            # move back
+            print("move back!")
+            while True:
+                if self.get_distance() > start_pos:
+                    break
+            
+            # stop
+            print("stop")
+            self.stop()
+
+            print()
+        except Exception e:
+            print("Error Occured : " + str(e))
+            self.drive_parking()
+        
+
     # =======================================================================
     # 1ST_ASSIGNMENT_CODE
     # Complete the code to perform First Assignment
@@ -31,6 +73,9 @@ if __name__ == "__main__":
     try:
         myCar = myCar("CarName")
         myCar.car_startup()
+        while True:
+            input()
+            myCar.assign()
 
     except KeyboardInterrupt:
         # when the Ctrl+C key has been pressed,
