@@ -14,25 +14,39 @@ class myCar(object):
 
     def __init__(self, car_name):
         self.car = Car(car_name)
+        self.speed = 100
 
     def drive_parking(self):
         self.car.drive_parking()
 
+    # move front
     def move_front(self):
         self.car.accelerator.go_forward(self.car.FASTER)
-
+    
+    # move back
     def move_back(self):
         self.car.accelerator.go_backward(self.car.FASTER)
 
+    # stop
     def stop(self):
         self.car.accelerator.stop()
 
+    # get distance by accpeted error for stable distance
     def get_distance(self):
-        sum = 0
-        for i in range(5):
-            sum += self.car.distance_detector.get_distance()
-        return sum / 5
+        count = 5
+        accpeted_error = 3
+        before = self.car.distance_detector.get_distance()
+        while count < 5:
+            distance = self.car.distance_detector.get_distance()
+            # if changed distance is acceptable
+            if abs(distance - before) < accpeted_error:
+                return distance
+            count += 1
+            before = distance
+        # distance error
+        return -1
 
+    # assignment code = move front and back
     def assign(self):
         try:
             goal = 10
@@ -40,13 +54,17 @@ class myCar(object):
 
             # move front
             print("move front!")
+            self.move_front()
             while True:
+                # if myCar reach goal
                 if self.get_distance() < goal:
                     break
             
             # move back
             print("move back!")
+            self.move_back()
             while True:
+                # if myCar reach start position
                 if self.get_distance() > start_pos:
                     break
             
@@ -57,8 +75,7 @@ class myCar(object):
             print()
         except Exception e:
             print("Error Occured : " + str(e))
-            self.drive_parking()
-        
+            self.stop()
 
     # =======================================================================
     # 1ST_ASSIGNMENT_CODE
@@ -66,7 +83,7 @@ class myCar(object):
     # =======================================================================
     def car_startup(self):
         # Implement the assignment code here.
-        pass
+        self.assign()
 
 
 if __name__ == "__main__":
@@ -75,7 +92,7 @@ if __name__ == "__main__":
         myCar.car_startup()
         while True:
             input()
-            myCar.assign()
+            myCar.car_startup
 
     except KeyboardInterrupt:
         # when the Ctrl+C key has been pressed,
