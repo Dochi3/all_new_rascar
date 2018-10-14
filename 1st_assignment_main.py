@@ -92,7 +92,7 @@ if __name__ == "__main__":
         myCar.car_startup()
         while True:
             input()
-            myCar.car_startup
+            myCar.car_startup()
 
     except KeyboardInterrupt:
         # when the Ctrl+C key has been pressed,
