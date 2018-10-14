@@ -59,6 +59,8 @@ class myCar(object):
                 # if myCar reach goal
                 if self.get_distance() < goal:
                     break
+
+            time.sleep(0.2)
             
             # move back
             print("move back!")
