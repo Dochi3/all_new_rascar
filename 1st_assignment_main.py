@@ -73,7 +73,7 @@ class myCar(object):
             self.stop()
 
             print()
-        except Exception e:
+        except Exception as e:
             print("Error Occured : " + str(e))
             self.stop()
 
