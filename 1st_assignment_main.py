@@ -33,7 +33,7 @@ class myCar(object):
 
     # get distance by accpeted error for stable distance
     def get_distance(self):
-        count = 5
+        count = 0
         accpeted_error = 3
         before = self.car.distance_detector.get_distance()
         while count < 5:
