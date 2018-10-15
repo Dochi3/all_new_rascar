@@ -49,8 +49,8 @@ class myCar(object):
     # assignment code = move front and back
     def assign(self):
         try:
-            goal = 30
-            start_pos = self.get_distance() - 25
+            goal = 20
+            start_pos = self.get_distance() - 10
 
             # move front
             print("move front!")
