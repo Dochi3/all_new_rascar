@@ -91,7 +91,6 @@ class myCar(object):
 if __name__ == "__main__":
     try:
         myCar = myCar("CarName")
-        myCar.car_startup()
         while True:
             input()
             myCar.car_startup()
