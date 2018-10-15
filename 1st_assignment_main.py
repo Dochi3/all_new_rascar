@@ -50,7 +50,7 @@ class myCar(object):
     def assign(self):
         try:
             goal = 20
-            start_pos = self.get_distance() - 15
+            start_pos = self.get_distance() - 10
 
             # move front
             print("move front!")
