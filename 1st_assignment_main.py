@@ -66,7 +66,7 @@ class myCar(object):
             rate = 0.2
             before_s = 0
             multi_rate = numpy.array([(i + 1) / 5 for i in range(5)])
-            weight = numpy.array([-5, -2, 0, 2, 5])
+            weight = numpy.array([-7, -3, 0, 2, 5])
             past_degree = [0, 0, 0, 0]
             self.move_front()
             while True:
