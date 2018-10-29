@@ -72,8 +72,8 @@ class myCar(object):
             while True:
                 line = self.read_digit()
                 if numpy.sum(line) == 5:
-                    self.move_front(self.speed * 0.5)
                     count += 1
+                    self.stop()
                     break
                 else:
                     count = 0
@@ -85,9 +85,8 @@ class myCar(object):
                 defore_s = s
                 past_degree = past_degree[1:]
             
-            self.stop()
             self.move_back()
-            time.sleep(0.7)
+            time.sleep(0.5)
             self.stop()
         except Exception as e:
             print("Error Occured : " + str(e))
