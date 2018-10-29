@@ -15,21 +15,24 @@ class myCar(object):
 
     def __init__(self, car_name):
         self.car = Car(car_name)
-        self.speed = 100
+        self.speed = 0
 
     def drive_parking(self):
         self.car.drive_parking()
 
     # move front
-    def move_front(self):
-        self.car.accelerator.go_forward(self.car.FASTER)
+    def move_front(self, speed=100):
+        self.speed = speed
+        self.car.accelerator.go_forward(self.speed)
     
     # move back
-    def move_back(self):
+    def move_back(self, speed=100):
+        self.speed = speed
         self.car.accelerator.go_backward(self.car.FASTER)
 
     # stop
     def stop(self):
+        self.speed = 0
         self.car.accelerator.stop()
 
     # get distance by accpeted error for stable distance
@@ -66,12 +69,13 @@ class myCar(object):
             weight = numpy.array([-5, -2, 0, 2, 5])
             past_degree = [0, 0, 0, 0]
             self.move_front()
-            while count < 5:
+            while count < 1:
                 line = self.read_digit()
                 if numpy.sum(line) == 0:
+                    self.move_front(self.speed * 0.5)
                     count += 1
                 else:
-                    count = 0
+                    count = 0:
                 s = numpy.dot(weight,line) * (1 + rate * line[2])
                 past_degree.append((s - before_s) * (-1 if s == 0 else 1))
                 degree = numpy.dot(multi_rate, past_degree)
