@@ -63,7 +63,7 @@ class myCar(object):
     def assign(self):
         try:
             count = 0
-            rate = 0.2
+            rate = 0.05
             before_s = 0
             multi_rate = numpy.array([(i + 1) / 5 for i in range(5)])
             weight = numpy.array([-7, -3, 0, 2, 5])
@@ -73,21 +73,20 @@ class myCar(object):
                 line = self.read_digit()
                 if numpy.sum(line) == 5:
                     count += 1
-                    self.stop()
+                    self.move_back(50)
+                    time.sleep(0.3)
                     break
                 else:
                     count = 0
                 dot = numpy.dot(weight, line)
-                s = numpy.dot(weight,line) * (1 + rate * line[2])
+                s = dot * (1 + rate * line[2])
                 past_degree.append((s - before_s) * (-1 if s == 0 else 1))
                 degree = numpy.dot(multi_rate, past_degree)
                 self.turn(degree)
                 defore_s = s
                 past_degree = past_degree[1:]
-            
-            self.move_back()
-            time.sleep(0.5)
             self.stop()
+
         except Exception as e:
             print("Error Occured : " + str(e))
             self.stop()
