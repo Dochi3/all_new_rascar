@@ -53,7 +53,7 @@ class myCar(object):
     def turn(self, degree):
         min_degree = -35
         max_degree = 35
-        degree = min(min_degree, max(max_degree, degree))
+        degree = max(min_degree, min(max_degree, degree))
         self.car.steering.turn(90 + degree)
 
     # assignment code = move front and back
