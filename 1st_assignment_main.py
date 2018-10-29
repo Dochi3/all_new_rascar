@@ -8,6 +8,7 @@
 
 from car import Car
 import time
+import numpy
 
 
 class myCar(object):
@@ -46,35 +47,28 @@ class myCar(object):
         # distance error
         return -1
 
+    def read_digit(self):
+        return self.car.line_detector.read_digital()
+    
+    def turn(self, degree):
+        min_degree = -35
+        max_degree = 35
+        degree = min(min_degree, max(max_degree, degree))
+        self.car.steering.turn(90 + degree)
+
     # assignment code = move front and back
     def assign(self):
         try:
-            goal = 25
-            start_pos = self.get_distance() - 10
-
-            # move front
-            print("move front!")
-            self.move_front()
-            while True:
-                # if myCar reach goal
-                if self.get_distance() < goal:
-                    break
-
-            time.sleep(0.2)
-            
-            # move back
-            print("move back!")
-            self.move_back()
-            while True:
-                # if myCar reach start position
-                if self.get_distance() > start_pos:
-                    break
-            
-            # stop
-            print("stop")
-            self.stop()
-
-            print()
+            self.turn(-30)
+            time.sleep(0.5)
+            self.turn(-10)
+            time.sleep(0.5)
+            self.turn(0)
+            time.sleep(0.5)
+            self.turn(10)
+            time.sleep(0.5)
+            self.turn(30)
+            time.sleep(0.5)
         except Exception as e:
             print("Error Occured : " + str(e))
             self.stop()
