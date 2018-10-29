@@ -72,8 +72,8 @@ class myCar(object):
                     count += 1
                 else:
                     count = 0
-                print("done")
                 s = (weight * line) * (1 + rate * line[2])
+                print("done")
                 past_degree += [(s - before_s) * (-1 if s == 0 else 1)]
                 degree = multi_rate * past_degree
                 self.turn(degree)
