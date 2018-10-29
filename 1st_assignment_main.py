@@ -85,9 +85,10 @@ class myCar(object):
                 defore_s = s
                 past_degree = past_degree[1:]
             
+            self.stop()
             self.move_back()
-            time.sleep(0.01)
-            self.stop()    
+            time.sleep(0.2)
+            self.stop()
         except Exception as e:
             print("Error Occured : " + str(e))
             self.stop()
