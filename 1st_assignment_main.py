@@ -75,7 +75,7 @@ class myCar(object):
                 s = numpy.dot(weight,line) * (1 + rate * line[2])
                 past_degree.append((s - before_s) * (-1 if s == 0 else 1))
                 print("done")
-                degree = multi_rate * past_degree
+                degree = numpy.dot(multi_rate, past_degree)
                 self.turn(degree)
                 defore_s = s
                 past_degree = past_degree[1:]
