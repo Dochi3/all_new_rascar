@@ -65,12 +65,14 @@ class myCar(object):
             multi_rate = numpy.array([(i + 1) / 5 for i in range(5)])
             weight = numpy.array([-5, -2, 0, 2, 5])
             past_degree = [0, 0, 0, 0]
+            self.move_front()
             while count < 5:
                 line = self.read_digit()
                 if numpy.sum(line) == 0:
                     count += 1
                 else:
                     count = 0
+                print("done")
                 s = (weight * line) * (1 + rate * line[2])
                 past_degree += [(s - before_s) * (-1 if s == 0 else 1)]
                 degree = multi_rate * past_degree
