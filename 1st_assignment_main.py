@@ -67,7 +67,7 @@ class myCar(object):
             past_degree = [0, 0, 0, 0]
             while count < 5:
                 line = self.read_digit()
-                if numpy.sum(line) == 5:
+                if numpy.sum(line) == 0:
                     count += 1
                 else:
                     count = 0
@@ -77,7 +77,9 @@ class myCar(object):
                 self.turn(degree)
                 defore_s = s
                 past_degree = past_degree[1:]
-                
+            
+            self.move_back()
+            self.stop()    
         except Exception as e:
             print("Error Occured : " + str(e))
             self.stop()
