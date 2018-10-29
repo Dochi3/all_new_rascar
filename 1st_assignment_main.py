@@ -59,15 +59,21 @@ class myCar(object):
     # assignment code = move front and back
     def assign(self):
         try:
+            self.move_front()
             self.turn(-30)
+            print("left most")
             time.sleep(0.5)
             self.turn(-10)
+            print("left")
             time.sleep(0.5)
             self.turn(0)
+            print("middle")
             time.sleep(0.5)
             self.turn(10)
+            print("right")
             time.sleep(0.5)
             self.turn(30)
+            print("right most")
             time.sleep(0.5)
         except Exception as e:
             print("Error Occured : " + str(e))
