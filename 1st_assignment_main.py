@@ -74,7 +74,7 @@ class myCar(object):
                 if numpy.sum(line) == 5:
                     count += 1
                     self.move_back(50)
-                    time.sleep(0.3)
+                    time.sleep(0.1)
                     break
                 else:
                     count = 0
