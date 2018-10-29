@@ -69,11 +69,12 @@ class myCar(object):
             weight = numpy.array([-5, -2, 0, 2, 5])
             past_degree = [0, 0, 0, 0]
             self.move_front()
-            while count < 1:
+            while True:
                 line = self.read_digit()
                 if numpy.sum(line) == 5:
                     self.move_front(self.speed * 0.5)
                     count += 1
+                    break
                 else:
                     count = 0:
                 s = numpy.dot(weight,line) * (1 + rate * line[2])
