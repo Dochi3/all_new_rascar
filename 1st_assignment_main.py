@@ -87,7 +87,7 @@ class myCar(object):
             
             self.stop()
             self.move_back()
-            time.sleep(0.2)
+            time.sleep(0.7)
             self.stop()
         except Exception as e:
             print("Error Occured : " + str(e))
