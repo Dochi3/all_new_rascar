@@ -76,7 +76,8 @@ class myCar(object):
                     count += 1
                     break
                 else:
-                    count = 0:
+                    count = 0
+                dot = numpy.dot(weight, line)
                 s = numpy.dot(weight,line) * (1 + rate * line[2])
                 past_degree.append((s - before_s) * (-1 if s == 0 else 1))
                 degree = numpy.dot(multi_rate, past_degree)
@@ -85,6 +86,7 @@ class myCar(object):
                 past_degree = past_degree[1:]
             
             self.move_back()
+            time.sleep(0.01)
             self.stop()    
         except Exception as e:
             print("Error Occured : " + str(e))
