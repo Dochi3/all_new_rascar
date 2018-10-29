@@ -48,32 +48,36 @@ class myCar(object):
         return -1
 
     def read_digit(self):
-        return self.car.line_detector.read_digital()
+        return numpy.array(self.car.line_detector.read_digital())
     
     def turn(self, degree):
-        min_degree = -35
-        max_degree = 35
+        min_degree = -25
+        max_degree = 25
         degree = max(min_degree, min(max_degree, degree))
         self.car.steering.turn(90 + degree)
 
     # assignment code = move front and back
     def assign(self):
         try:
-            self.turn(-30)
-            print("left most")
-            time.sleep(0.5)
-            self.turn(-10)
-            print("left")
-            time.sleep(0.5)
-            self.turn(0)
-            print("middle")
-            time.sleep(0.5)
-            self.turn(10)
-            print("right")
-            time.sleep(0.5)
-            self.turn(30)
-            print("right most")
-            time.sleep(0.5)
+            count = 0
+            rate = 0.2
+            before_s = 0
+            multi_rate = numpy.array([(i + 1) / 5 for i in range(5)])
+            weight = numpy.array([-5, -2, 0, 2, 5])
+            past_degree = [0, 0, 0, 0]
+            while count < 5:
+                line = self.read_digit()
+                if numpy.sum(line) == 5:
+                    count += 1
+                else:
+                    count = 0
+                s = (weight * line) * (1 + rate * line[2])
+                past_degree += [(s - before_s) * (-1 if s == 0 else 1)]
+                degree = multi_rate * past_degree
+                self.turn(degree)
+                defore_s = s
+                past_degree = past_degree[1:]
+                
         except Exception as e:
             print("Error Occured : " + str(e))
             self.stop()
@@ -91,7 +95,7 @@ if __name__ == "__main__":
     try:
         myCar = myCar("CarName")
         while True:
-            input()
+            input("Press Enter to Start")
             myCar.car_startup()
 
     except KeyboardInterrupt:
