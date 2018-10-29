@@ -71,7 +71,7 @@ class myCar(object):
             self.move_front()
             while count < 1:
                 line = self.read_digit()
-                if numpy.sum(line) == 0:
+                if numpy.sum(line) == 5:
                     self.move_front(self.speed * 0.5)
                     count += 1
                 else:
