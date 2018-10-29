@@ -59,7 +59,6 @@ class myCar(object):
     # assignment code = move front and back
     def assign(self):
         try:
-            self.move_front()
             self.turn(-30)
             print("left most")
             time.sleep(0.5)
