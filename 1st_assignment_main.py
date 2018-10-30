@@ -72,7 +72,7 @@ class myCar(object):
             start = time.time()
             while True:
                 line = self.read_digit()
-                if time.time() - start > 3.2:
+                if time.time() - start > 3:
                     break
                 if numpy.sum(line) == 5:
                     count += 1
