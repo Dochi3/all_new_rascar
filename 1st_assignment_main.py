@@ -62,7 +62,6 @@ class myCar(object):
     # assignment code = move front and back
     def assign(self):
         try:
-            count = 0
             rate = 0.05
             before_s = 0
             multi_rate = numpy.array([(i + 1) / 5 for i in range(5)])
@@ -70,17 +69,13 @@ class myCar(object):
             past_degree = [0, 0, 0, 0]
             self.move_front()
             start = time.time()
+            end = 3.7
             while True:
                 line = self.read_digit()
-                if time.time() - start > 3:
-                    break
+                if time.time() - start > 2.5:
+                    self.move_front(100 * (end - start))
                 if numpy.sum(line) == 5:
-                    count += 1
-                    self.move_back(50)
-                    time.sleep(0.17)
                     break
-                else:
-                    count = 0
                 dot = numpy.dot(weight, line)
                 s = dot * (1 + rate * line[2])
                 past_degree.append((s - before_s) * (-1 if s == 0 else 1))
