@@ -69,8 +69,11 @@ class myCar(object):
             weight = numpy.array([-5, -2, 0, 2, 5])
             past_degree = [0, 0, 0, 0]
             self.move_front()
+            start = time.time()
             while True:
                 line = self.read_digit()
+                if time.time() - start > 3.2:
+                    break
                 if numpy.sum(line) == 5:
                     count += 1
                     self.move_back(50)
