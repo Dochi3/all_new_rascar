@@ -69,7 +69,7 @@ class myCar(object):
             past_degree = [0, 0, 0, 0]
             self.move_front()
             start = time.time()
-            end = 3.7
+            end = start + 3.7
             while True:
                 line = self.read_digit()
                 if time.time() - start > 2.5:
