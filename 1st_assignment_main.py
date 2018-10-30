@@ -74,7 +74,7 @@ class myCar(object):
                 line = self.read_digit()
                 now_time = time.time()
                 if 0 < end - now_time < 0.5:
-                    self.move_front(int(100 * (end - now_time))
+                    self.move_front(int(100 * (end - now_time)))
                 if numpy.sum(line) == 5:
                     break
                 dot = numpy.dot(weight, line)
