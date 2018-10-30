@@ -69,11 +69,11 @@ class myCar(object):
             past_degree = [0, 0, 0, 0]
             self.move_front()
             start = time.time()
-            end = start + 3.7
+            end = start + 3.5
             while True:
                 line = self.read_digit()
                 if time.time() - start > 2.5:
-                    self.move_front(int(100 * (end - start)))
+                    self.move_front(int(100 * (end - time.time())))
                 if numpy.sum(line) == 5:
                     break
                 dot = numpy.dot(weight, line)
