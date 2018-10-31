@@ -69,7 +69,7 @@ class myCar(object):
             past_degree = [0, 0, 0, 0]
             self.move_front()
             start = time.time()
-            end = start + 3.37
+            end = start + 3.3
             while True:
                 line = self.read_digit()
                 now_time = time.time()
