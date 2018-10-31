@@ -69,7 +69,7 @@ class myCar(object):
             past_degree = [0, 0, 0, 0]
             self.move_front()
             start = time.time()
-            end = start + 3.5
+            end = start + 3.4
             while True:
                 line = self.read_digit()
                 now_time = time.time()
@@ -84,6 +84,8 @@ class myCar(object):
                 self.turn(degree)
                 defore_s = s
                 past_degree = past_degree[1:]
+            self.move_back()
+            time.sleep(0.16)
             self.stop()
 
         except Exception as e:
