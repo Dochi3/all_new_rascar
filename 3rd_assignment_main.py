@@ -124,7 +124,7 @@ class myCar(object):
                 now_dot = before_dot * line_out_mul
             before_dot = now_dot
 
-            turning_angle = now_dot * angle_mul 
+            turning_angle = min(max(now_dot * angle_mul, 45), -45)
             if before_turning_angle == turning_angle:
                 continue
             before_turning_angle = turning_angle
