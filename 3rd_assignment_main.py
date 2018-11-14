@@ -144,7 +144,8 @@ class myCar(object):
         # Implement the assignment code here.
         try:
             self.assign()
-        except:
+        except Exception as e:
+            print(e)
             self.stop()
 
 
