@@ -130,11 +130,12 @@ class myCar(object):
             before_turning_angle = turning_angle
             print(turning_angle)
             self.turn(turning_angle)
-
+            
+            slow_speed = max(0, speed - 2 * abs(turning_angle))
             if turning_angle < 0:
-                self.move(speed + 2 * turning_angle, speed)
+                self.move(slow_speed, speed)
             else:
-                self.move(speed, speed - turning_angle * 2)
+                self.move(speed, slow_speed)
         
         self.stop()
 
