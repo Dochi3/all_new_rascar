@@ -101,6 +101,8 @@ class myCar(object):
         count = 0
         stop_condition = 20
 
+        before_turning_angle = -123
+
         while True:
             lines = self.read_digit()
             lines_sum = numpy.sum(lines)
@@ -121,6 +123,10 @@ class myCar(object):
                 now_dot = before_dot * line_out_mul
 
             turning_angle = now_dot * angle_mul 
+            if before_turning_angle == turning_angle:
+                continue
+            before_turning_angle = turning_angle
+            print(turning_angle)
 
             if turning_angle < 0:
                 self.move(100 + 2 * turning_angle, 100)
