@@ -99,7 +99,7 @@ class myCar(object):
         before_dot = 0
 
         count = 0
-        stop_condition = 20
+        stop_condition = 3
 
         before_turning_angle = -123
 
