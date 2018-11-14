@@ -70,8 +70,8 @@ class myCar(object):
         return numpy.array(self.car.line_detector.read_digital())
     
     def turn(self, degree):
-        min_degree = -45
-        max_degree = 45
+        min_degree = -37
+        max_degree = 37
         degree = max(min_degree, min(max_degree, degree))
         self.car.steering.turn(90 + degree)
 
