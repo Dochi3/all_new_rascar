@@ -128,6 +128,7 @@ class myCar(object):
                 continue
             before_turning_angle = turning_angle
             print(turning_angle)
+            self.turn(turning_angle)
 
             if turning_angle < 0:
                 self.move(speed + 2 * turning_angle, speed)
