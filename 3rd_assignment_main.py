@@ -89,7 +89,7 @@ class myCar(object):
 
     # assignment code = move front and back
     def assign(self):
-        speed = 72
+        speed = 50
         self.move_front(speed)
 
         vector = numpy.array([-3, -1, 0, 1, 3])
