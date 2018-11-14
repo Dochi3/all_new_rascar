@@ -144,7 +144,7 @@ class myCar(object):
         # Implement the assignment code here.
         try:
             self.assign()
-        else:
+        except:
             self.stop()
 
 
