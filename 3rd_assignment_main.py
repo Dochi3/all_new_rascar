@@ -80,12 +80,12 @@ class myCar(object):
         turn_left_angle = -35
         turn_right_angle = 35
 
-        self.turn(turn_left_angle)
+        self.turn(turn_right_angle)
         while True:
             distance = self.get_distance()
             if self.obstacle_detected_distance < distance:
                 break
-        self.turn(turn_right_angle)
+        self.turn(turn_left_angle)
 
     # assignment code = move front and back
     def assign(self):
