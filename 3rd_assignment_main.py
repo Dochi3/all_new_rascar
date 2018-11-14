@@ -82,7 +82,7 @@ class myCar(object):
     def assign(self):
         obstacle_detected_distance = 35
 
-        self.turn(35)
+        self.turn(40)
 
         while True:
             pass
