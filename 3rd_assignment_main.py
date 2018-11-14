@@ -113,7 +113,7 @@ class myCar(object):
             else:
                 count = 0
             
-            distance = self.get_distance
+            distance = self.get_distance()
             if 0 < distance and distance < self.obstacle_detected_distance:
                 self.evading()
             
@@ -142,7 +142,10 @@ class myCar(object):
     # =======================================================================
     def car_startup(self):
         # Implement the assignment code here.
-        self.assign()
+        try:
+            self.assign()
+        else:
+            self.stop()
 
 
 if __name__ == "__main__":
