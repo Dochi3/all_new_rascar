@@ -21,15 +21,15 @@ class myCar(object):
     def drive_parking(self):
         self.car.drive_parking()
 
-    def speed_check(self, *speedList):
-        for speed in speedList:
-            if speed not in range(0, 101):
+    def speed_check(self, *speeds):
+        for speed in speeds:
+            if int(speed) not in range(0, 101):
                 return False
         return True
 
     def move(self, *speeds):
         if not self.speed_check(speeds):
-            raise ValueError('speed ranges from 0 to 100')
+            raise ValueError('speed ranges from 0 to 100, speeds is {}' .format(speeds))
         speedL, speedR = speeds
         self.car.accelerator.left_wheel.speed = int(speedL)
         self.car.accelerator.right_wheel.speed = int(speedR)
