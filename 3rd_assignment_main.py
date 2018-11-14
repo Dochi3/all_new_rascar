@@ -28,7 +28,7 @@ class myCar(object):
         return True
 
     def move(self, *speeds):
-        if not self.speed_check(speeds):
+        if not self.speed_check(*speeds):
             raise ValueError('speed ranges from 0 to 100, speeds is {}' .format(speeds))
         speedL, speedR = speeds
         self.car.accelerator.left_wheel.speed = int(speedL)
