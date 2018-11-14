@@ -122,6 +122,7 @@ class myCar(object):
                 now_dot = numpy.dot(lines, vector) / lines_sum
             else:
                 now_dot = before_dot * line_out_mul
+            before_dot = now_dot
 
             turning_angle = now_dot * angle_mul 
             if before_turning_angle == turning_angle:
