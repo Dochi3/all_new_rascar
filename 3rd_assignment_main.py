@@ -89,7 +89,8 @@ class myCar(object):
 
     # assignment code = move front and back
     def assign(self):
-        self.move_front()
+        speed = 70
+        self.move_front(speed)
 
         vector = numpy.array([-3, -1, 0, 1, 3])
         line_out_mul = 1.3
@@ -129,9 +130,9 @@ class myCar(object):
             print(turning_angle)
 
             if turning_angle < 0:
-                self.move(100 + 2 * turning_angle, 100)
+                self.move(speed + 2 * turning_angle, speed)
             else:
-                self.move(100, 100 - turning_angle * 2)
+                self.move(speed, speed - turning_angle * 2)
         
         self.stop()
 
