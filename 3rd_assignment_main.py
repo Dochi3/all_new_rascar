@@ -64,7 +64,6 @@ class myCar(object):
         accpeted_error = 3
         before = self.car.distance_detector.get_distance()
         while count < 5:
-            print("distance : " + str(before))
             distance = self.car.distance_detector.get_distance()
             # if changed distance is acceptable
             if abs(distance - before) < accpeted_error:
@@ -139,6 +138,7 @@ class myCar(object):
             before_dot = now_dot
 
             turning_angle = max(min(now_dot * angle_mul, 100), -100)
+            print(lines, turning_angle)
             if before_turning_angle == turning_angle:
                 continue
             before_turning_angle = turning_angle
