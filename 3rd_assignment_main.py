@@ -29,7 +29,7 @@ class myCar(object):
     # move back as same speed of each motor
     def move_back(self, speed=100):
         self.speed = int(speed)
-        self.car.accelerator.go_backward(self.car.FASTER)
+        self.car.accelerator.go_backward(self.speed)
 
     # stop
     def stop(self):
@@ -72,7 +72,7 @@ class myCar(object):
 
     # assignment code = move front and back
     def assign(self):
-        speed = 30
+        speed = 50
         count = 0
         stop_condition = 3
         vector = numpy.array([-3, -1, 0, 1, 3])
