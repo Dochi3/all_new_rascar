@@ -56,9 +56,9 @@ class myCar(object):
 
         self.move_front(40)
         self.turn(turn_left_angle)
-        time.sleep(0.3)
+        time.sleep(3)
         self.turn(turn_right_angle)
-        time.sleep(0.3)
+        time.sleep(3)
         self.turn(turn_left_angle)
 
     # assignment code = move front and back
