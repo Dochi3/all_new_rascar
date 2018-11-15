@@ -59,8 +59,11 @@ class myCar(object):
         time.sleep(0.8)
         self.turn(turn_right_angle)
         time.sleep(1.5)
+        self.turn(0)
+        while numpy.sum(self.read_digit) == 0:
+            time.sleep(0.01)
         self.turn(turn_left_angle)
-        time.sleep(0.1)
+        time.sleep(0.05)
 
     # assignment code = move front and back
     def assign(self):
