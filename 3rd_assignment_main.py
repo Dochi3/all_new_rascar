@@ -80,7 +80,6 @@ class myCar(object):
         while True:
             lines = self.read_digit()
             lines_sum = numpy.sum(lines)
-            print(lines, lines_sum)
             if lines_sum == 5:
                 count += 1
                 if count >= stop_condition:
@@ -98,8 +97,9 @@ class myCar(object):
 
             print("get distance")
             distance = self.get_distance()
-            print("get distance done")
+            print("get distance done", distance)
             if 0 < distance and distance < self.obstacle_detected_distance:
+                print("evading")
                 self.evading()
             
             dot = numpy.dot(vector, lines)
