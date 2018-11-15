@@ -75,6 +75,7 @@ class myCar(object):
         vector = numpy.array([-3, -1, 0, 1, 3])
         turning_rate = 12
         before_turning_angle = 0
+        before_line_sum = 0
         while True:
             lines = self.read_digit()
             lines_sum = numpy.sum(lines)
@@ -84,10 +85,12 @@ class myCar(object):
                     break
             else:
                 count = 0
-                if lines_sum == 0:
+                if lines_sum == 0 and line_sum != before_line_sum:
                     self.turn(before_turning_angle)
                     self.move_back()
                     continue
+            
+            before_line_sum = lines_sum
             
             self.move_front()
             distance = self.get_distance()
@@ -96,6 +99,8 @@ class myCar(object):
             
             dot = numpy.dot(vector, lines)
             turning_angle = dot * turning_rate / lines_sum
+            if before_turning_angle == turning_angle:
+                continue
             before_turning_angle = turning_angle
             print(time.time(), turning_angle)
             self.turn(turning_angle)
