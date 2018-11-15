@@ -33,7 +33,7 @@ class myCar(object):
         speedL, speedR = speeds
         self.car.accelerator.left_wheel.speed = int(abs(speedL))
         self.car.accelerator.right_wheel.speed = int(abs(speedR))
-
+        print(time.time(), speeds)
         if speedL >= 0:
             self.car.accelerator.left_wheel.forward()
         else:
@@ -147,6 +147,7 @@ class myCar(object):
                 self.turn(turning_angle)
             else:
                 self.turn(-turning_angle)
+
             if turning_angle < 0:
                 self.move(slow_speed, speed)
             else:
