@@ -106,6 +106,7 @@ class myCar(object):
             
 
             distance = self.get_distance()
+            print(distance)
             if 0 < distance and distance < self.obstacle_detected_distance:
                 obstacle_count += 1
                 if obstacle_count > 1:
