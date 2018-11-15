@@ -110,10 +110,10 @@ class myCar(object):
             if 0 < distance and distance < self.obstacle_detected_distance:
                 obstacle_count += 1
                 if obstacle_count > 1:
+                    obstacle_count = 0
                     print("evading")
                     self.evading()
                     continue
-            obstacle_count = 0
             
             dot = numpy.dot(vector, lines)
             turning_angle = dot * turning_rate / lines_sum if lines_sum else before_turning_angle
