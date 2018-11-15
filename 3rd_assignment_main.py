@@ -76,7 +76,7 @@ class myCar(object):
         speed = 70
         count = 0
         obstacle_count = 0
-        stop_condition = 2
+        stop_condition = 4
         vector = numpy.array([-3, -1, 0, 1, 3])
         turning_rate = 12
         before_turning_angle = 0
@@ -85,7 +85,7 @@ class myCar(object):
         while True:
             lines = self.read_digit()
             lines_sum = numpy.sum(lines)
-            if lines_sum == 5:
+            if lines_sum >= 4:
                 count += 1
                 if count >= stop_condition:
                     break
