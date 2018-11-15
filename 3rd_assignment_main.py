@@ -59,7 +59,9 @@ class myCar(object):
 
     # get distance by accpeted error for stable distance
     def get_distance(self):
+        print("get distance")
         distances = [self.car.distance_detector.get_distance() for i in range(5)]
+        print("done")
         return sorted(distances)[2]
 
     def read_digit(self):
