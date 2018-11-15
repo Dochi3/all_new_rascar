@@ -73,10 +73,11 @@ class myCar(object):
 
     # assignment code = move front and back
     def assign(self):
-        speed = 70
+        speed = 75
         count = 0
         obstacle_count = 0
-        stop_condition = 4
+        stop_condition = 3
+        evading_condition = 2
         vector = numpy.array([-3, -1, 0, 1, 3])
         turning_rate = 12
         before_turning_angle = 0
@@ -87,7 +88,7 @@ class myCar(object):
             lines_sum = numpy.sum(lines)
             if lines_sum >= 4:
                 count += 1
-                if count >= stop_condition:
+                if count > stop_condition:
                     break
             else:
                 count = 0
@@ -109,7 +110,7 @@ class myCar(object):
             print(distance)
             if 0 < distance and distance < self.obstacle_detected_distance:
                 obstacle_count += 1
-                if obstacle_count > 1:
+                if obstacle_count > evading_condition:
                     obstacle_count = 0
                     print("evading")
                     self.evading()
