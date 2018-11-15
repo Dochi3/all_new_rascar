@@ -89,7 +89,6 @@ class myCar(object):
                     continue
                 before_lines_sum = lines_sum
             
-            self.move_front(speed)
 
             distance = self.get_distance()
             if 0 < distance and distance < self.obstacle_detected_distance:
@@ -103,6 +102,7 @@ class myCar(object):
                 continue
             before_turning_angle = turning_angle
             self.turn(turning_angle)
+            self.move_front(speed)
             
         
         self.stop()
