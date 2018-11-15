@@ -76,9 +76,11 @@ class myCar(object):
         turning_rate = 12
         before_turning_angle = 0
         before_lines_sum = 0
+        self.move_front()
         while True:
             lines = self.read_digit()
             lines_sum = numpy.sum(lines)
+            print(lines, lines_sum)
             if lines_sum == 5:
                 count += 1
                 if count >= stop_condition:
