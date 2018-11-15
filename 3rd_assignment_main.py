@@ -64,6 +64,7 @@ class myCar(object):
         accpeted_error = 3
         before = self.car.distance_detector.get_distance()
         while count < 5:
+            print("distance : " + str(before))
             distance = self.car.distance_detector.get_distance()
             # if changed distance is acceptable
             if abs(distance - before) < accpeted_error:
