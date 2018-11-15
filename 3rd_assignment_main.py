@@ -38,8 +38,9 @@ class myCar(object):
 
     # get distance by accpeted error for stable distance
     def get_distance(self):
-        distances = [self.car.distance_detector.get_distance() for i in range(5)]
-        return sorted(distances)[2]
+        distances = sorted([self.car.distance_detector.get_distance() for i in range(5)])
+        print(distances)
+        return distances[2]
 
     def read_digit(self):
         return numpy.array(self.car.line_detector.read_digital())
