@@ -55,6 +55,7 @@ class myCar(object):
         turn_left_angle = -35
         turn_right_angle = 35
 
+        self.move_front(40)
         self.turn(turn_left_angle)
         while numpy.sum(self.read_digit()) > 0:
             time.sleep(0.1)
@@ -67,6 +68,7 @@ class myCar(object):
         while numpy.sum(self.read_digit()) == 0:
             time.sleep(0.1)
 
+        self.move_front(100)
         self.turn(turn_left_angle)
 
     # assignment code = move front and back
@@ -105,7 +107,7 @@ class myCar(object):
                 self.evading()
             
             dot = numpy.dot(vector, lines)
-            turning_angle = dot * turning_rate / lines_sum
+            turning_angle = dot * turning_rate / lines_sum if lines_sum else before_turning_angle
             if before_turning_angle == turning_angle:
                 continue
             before_turning_angle = turning_angle
