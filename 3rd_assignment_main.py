@@ -33,7 +33,6 @@ class myCar(object):
         speedL, speedR = speeds
         self.car.accelerator.left_wheel.speed = int(abs(speedL))
         self.car.accelerator.right_wheel.speed = int(abs(speedR))
-        print(time.time(), speeds)
         if speedL >= 0:
             self.car.accelerator.left_wheel.forward()
         else:
@@ -118,6 +117,7 @@ class myCar(object):
                 count = 0
             
             distance = self.get_distance()
+            print(time.time(), distance)
             if 0 < distance and distance < self.obstacle_detected_distance:
                 self.evading()
             
