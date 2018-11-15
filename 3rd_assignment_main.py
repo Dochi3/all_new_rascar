@@ -92,7 +92,7 @@ class myCar(object):
                 if lines_sum == 0:
                     if lines_sum == before_lines_sum:
                         continue
-                    self.turn(before_turning_angle)
+                    self.turn(-before_turning_angle)
                     self.move_back(speed)
                     before_lines_sum = lines_sum
                     continue
