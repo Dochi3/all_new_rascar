@@ -52,7 +52,7 @@ class myCar(object):
         self.car.steering.turn(90 + degree)
 
     def evading(self):
-        turn_left_angle = -35
+        turn_left_angle = -15
         turn_right_angle = 35
 
         self.move_front(40)
