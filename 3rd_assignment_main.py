@@ -81,13 +81,18 @@ class myCar(object):
                     break
             else:
                 count = 0
+                is_turning = False
                 if lines_sum == 0:
-                    if lines_sum == before_lines_sum:
-                        continue
                     self.turn(-before_turning_angle)
                     self.move_back(speed)
-                    continue
+                    is_turning = True
+                elif before_lines_sum == 0:
+                    self.turn(before_turning_angle)
+                    self.move_front(speed)
+                    is_turning = True
                 before_lines_sum = lines_sum
+                if is_turning:
+                    continue
             
 
             distance = self.get_distance()
