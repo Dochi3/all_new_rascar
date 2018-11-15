@@ -39,7 +39,6 @@ class myCar(object):
     # get distance by accpeted error for stable distance
     def get_distance(self):
         distances = sorted([self.car.distance_detector.get_distance() for i in range(5)])
-        print(distances)
         return distances[2]
 
     def read_digit(self):
@@ -89,11 +88,11 @@ class myCar(object):
                     break
             else:
                 count = 0
-                print(lines_sum, before_lines_sum)
                 if lines_sum == 0 and lines_sum != before_lines_sum:
                     if lines_sum == before_lines_sum:
                         continue
                     self.turn(before_turning_angle)
+                    print("move back")
                     self.move_back()
                     before_lines_sum = lines_sum
                     continue
