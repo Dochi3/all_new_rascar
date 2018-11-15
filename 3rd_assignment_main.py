@@ -88,8 +88,8 @@ class myCar(object):
                     self.move_back(speed)
                     continue
                 before_lines_sum = lines_sum
-            if before_lines_sum == 0:
-                self.move_front(speed)
+            
+            self.move_front(speed)
 
             distance = self.get_distance()
             if 0 < distance and distance < self.obstacle_detected_distance:
