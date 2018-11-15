@@ -23,19 +23,25 @@ class myCar(object):
 
     def speed_check(self, *speeds):
         for speed in speeds:
-            if int(speed) not in range(0, 101):
+            if int(speed) not in range(-100, 101):
                 return False
         return True
 
     def move(self, *speeds):
         if not self.speed_check(*speeds):
-            raise ValueError('speed ranges from 0 to 100, speeds is {}' .format(speeds))
+            raise ValueError('speed ranges from -100 to 100, speeds is {}' .format(speeds))
         speedL, speedR = speeds
-        self.car.accelerator.left_wheel.speed = int(speedL)
-        self.car.accelerator.right_wheel.speed = int(speedR)
+        self.car.accelerator.left_wheel.speed = int(abs(speedL))
+        self.car.accelerator.right_wheel.speed = int(abs(speedR))
 
-        self.car.accelerator.left_wheel.forward()
-        self.car.accelerator.right_wheel.forward()
+        if speedL >= 0:
+            self.car.accelerator.left_wheel.forward()
+        else:
+            self.car.accelerator.left_wheel.backward()
+        if speedR >= 0:
+            self.car.accelerator.right_wheel.forward()
+        else:
+            self.car.accelerator.right_wheel.backward()
 
     # move front as same speed of each motor
     def move_front(self, speed=100):
@@ -81,11 +87,18 @@ class myCar(object):
         turn_right_angle = 35
 
         self.turn(turn_right_angle)
-        while True:
-            distance = self.get_distance()
-            if self.obstacle_detected_distance < distance:
-                break
+        while numpy.sum(self.read_digit()) > 0:
+            time.sleep(0.01)
+        while numpy.sum(self.read_digit()) == 0:
+            time.sleep(0.01)
+
         self.turn(turn_left_angle)
+        while numpy.sum(self.read_digit()) > 0:
+            time.sleep(0.01)
+        while numpy.sum(self.read_digit()) == 0:
+            time.sleep(0.01)
+
+        self.turn(turn_right_angle)
 
     # assignment code = move front and back
     def assign(self):
@@ -102,7 +115,7 @@ class myCar(object):
         count = 0
         stop_condition = 3
 
-        before_turning_angle = -123
+        before_turning_angle = 0
 
         while True:
             lines = self.read_digit()
@@ -124,14 +137,16 @@ class myCar(object):
                 now_dot = before_dot * line_out_mul
             before_dot = now_dot
 
-            turning_angle = max(min(now_dot * angle_mul, 45), -45)
+            turning_angle = max(min(now_dot * angle_mul, 70), -70)
             if before_turning_angle == turning_angle:
                 continue
             before_turning_angle = turning_angle
-            print(turning_angle)
-            self.turn(turning_angle)
-            
-            slow_speed = max(0, speed - 2 * abs(turning_angle))
+
+            slow_speed = speed - 2 * abs(turning_angle)
+            if slow_speed >= 0:
+                self.turn(turning_angle)
+            else:
+                self.turn(-turning_angle)
             if turning_angle < 0:
                 self.move(slow_speed, speed)
             else:
