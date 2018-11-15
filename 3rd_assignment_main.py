@@ -70,9 +70,6 @@ class myCar(object):
 
     # assignment code = move front and back
     def assign(self):
-        while True:
-            time.sleep(0.01)
-            print(self.get_distance())
         count = 0
         stop_condition = 3
         vector = numpy.array([-3, -1, 0, 1, 3])
