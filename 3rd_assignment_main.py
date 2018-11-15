@@ -16,7 +16,7 @@ class myCar(object):
     def __init__(self, car_name):
         self.car = Car(car_name)
         self.speed = 0
-        self.obstacle_detected_distance = 27
+        self.obstacle_detected_distance = 33
 
     def drive_parking(self):
         self.car.drive_parking()
