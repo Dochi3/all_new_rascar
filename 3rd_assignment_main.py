@@ -51,20 +51,20 @@ class myCar(object):
         self.car.steering.turn(90 + degree)
 
     def evading(self):
-        turn_left_angle = -20
-        turn_right_angle = 20
+        turn_left_angle = -23
+        turn_right_angle = 23
 
         self.move_front(40)
         self.turn(turn_left_angle)
-        time.sleep(1)
+        time.sleep(0.8)
         self.turn(turn_right_angle)
-        time.sleep(1.7)
+        time.sleep(1.5)
         self.turn(turn_left_angle)
         time.sleep(0.1)
 
     # assignment code = move front and back
     def assign(self):
-        speed = 50
+        speed = 70
         count = 0
         stop_condition = 3
         vector = numpy.array([-3, -1, 0, 1, 3])
