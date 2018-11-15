@@ -96,7 +96,9 @@ class myCar(object):
             if before_lines_sum == 0:
                 self.move_front()
 
+            print("get distance")
             distance = self.get_distance()
+            print("get distance done")
             if 0 < distance and distance < self.obstacle_detected_distance:
                 self.evading()
             
