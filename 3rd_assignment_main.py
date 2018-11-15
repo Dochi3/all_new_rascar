@@ -58,7 +58,7 @@ class myCar(object):
         self.turn(turn_left_angle)
         time.sleep(1)
         self.turn(turn_right_angle)
-        time.sleep(2)
+        time.sleep(1.7)
         self.turn(turn_left_angle)
         time.sleep(0.1)
 
