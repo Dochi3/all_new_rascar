@@ -21,27 +21,6 @@ class myCar(object):
     def drive_parking(self):
         self.car.drive_parking()
 
-    def speed_check(self, *speeds):
-        for speed in speeds:
-            if int(speed) not in range(-100, 101):
-                return False
-        return True
-
-    def move(self, *speeds):
-        if not self.speed_check(*speeds):
-            raise ValueError('speed ranges from -100 to 100, speeds is {}' .format(speeds))
-        speedL, speedR = speeds
-        self.car.accelerator.left_wheel.speed = int(abs(speedL))
-        self.car.accelerator.right_wheel.speed = int(abs(speedR))
-        if speedL >= 0:
-            self.car.accelerator.left_wheel.forward()
-        else:
-            self.car.accelerator.left_wheel.backward()
-        if speedR >= 0:
-            self.car.accelerator.right_wheel.forward()
-        else:
-            self.car.accelerator.right_wheel.backward()
-
     # move front as same speed of each motor
     def move_front(self, speed=100):
         self.speed = int(speed)
@@ -59,9 +38,7 @@ class myCar(object):
 
     # get distance by accpeted error for stable distance
     def get_distance(self):
-        print("get distance")
         distances = [self.car.distance_detector.get_distance() for i in range(5)]
-        print("done")
         return sorted(distances)[2]
 
     def read_digit(self):
@@ -93,21 +70,11 @@ class myCar(object):
 
     # assignment code = move front and back
     def assign(self):
-        speed = 100
-        self.move_front(speed)
-
-        vector = numpy.array([-3, -2, 0, 2, 3])
-        line_out_mul = 1.3
-        angle_mul = 12
-
-        now_dot = 0
-        before_dot = 0
-
         count = 0
         stop_condition = 3
-
+        vector = numpy.array([-3, -1, 0, 1, 3])
+        turning_rate = 12
         before_turning_angle = 0
-
         while True:
             lines = self.read_digit()
             lines_sum = numpy.sum(lines)
@@ -117,33 +84,21 @@ class myCar(object):
                     break
             else:
                 count = 0
+                if lines_sum == 0:
+                    self.turn(before_turning_angle)
+                    self.move_back()
+                    continue
             
+            self.move_front()
             distance = self.get_distance()
-            print(time.time(), distance)
             if 0 < distance and distance < self.obstacle_detected_distance:
                 self.evading()
             
-            if lines_sum:
-                now_dot = numpy.dot(lines, vector) / lines_sum
-            else:
-                now_dot = before_dot * line_out_mul
-            before_dot = now_dot
-
-            turning_angle = max(min(now_dot * angle_mul, 100), -100)
-            if before_turning_angle == turning_angle:
-                continue
+            dot = numpy.dot(vector, lines_sum)
+            turning_angle = dot * turning_rate
             before_turning_angle = turning_angle
-
-            slow_speed = speed - 2 * abs(turning_angle)
-            if slow_speed >= 0:
-                self.turn(turning_angle)
-            else:
-                self.turn(-turning_angle)
-
-            if turning_angle < 0:
-                self.move(slow_speed, speed)
-            else:
-                self.move(speed, slow_speed)
+            self.turn(turning_angle)
+            
         
         self.stop()
 
