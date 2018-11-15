@@ -60,18 +60,8 @@ class myCar(object):
 
     # get distance by accpeted error for stable distance
     def get_distance(self):
-        count = 0
-        accpeted_error = 3
-        before = self.car.distance_detector.get_distance()
-        while count < 5:
-            distance = self.car.distance_detector.get_distance()
-            # if changed distance is acceptable
-            if abs(distance - before) < accpeted_error:
-                return distance
-            count += 1
-            before = distance
-        # distance error
-        return -1
+        distances = [self.car.distance_detector.get_distance() for i in range(5)]
+        return sorted(distances)[2]
 
     def read_digit(self):
         return numpy.array(self.car.line_detector.read_digital())
@@ -135,11 +125,9 @@ class myCar(object):
                 now_dot = numpy.dot(lines, vector) / lines_sum
             else:
                 now_dot = before_dot * line_out_mul
-            print(now_dot)
             before_dot = now_dot
 
             turning_angle = max(min(now_dot * angle_mul, 100), -100)
-            print(lines, turning_angle, before_turning_angle)
             if before_turning_angle == turning_angle:
                 continue
             before_turning_angle = turning_angle
