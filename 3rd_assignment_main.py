@@ -97,6 +97,7 @@ class myCar(object):
             dot = numpy.dot(vector, lines)
             turning_angle = dot * turning_rate / lines_sum
             before_turning_angle = turning_angle
+            print(turning_angle)
             self.turn(turning_angle)
             
         
