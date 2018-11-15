@@ -52,14 +52,15 @@ class myCar(object):
 
     def evading(self):
         turn_left_angle = -20
-        turn_right_angle = 17
+        turn_right_angle = 20
 
         self.move_front(40)
         self.turn(turn_left_angle)
-        time.sleep(1.2)
+        time.sleep(1)
         self.turn(turn_right_angle)
-        time.sleep(1.5)
+        time.sleep(2)
         self.turn(turn_left_angle)
+        time.sleep(0.1)
 
     # assignment code = move front and back
     def assign(self):
