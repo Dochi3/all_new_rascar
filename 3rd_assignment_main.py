@@ -16,7 +16,7 @@ class myCar(object):
     def __init__(self, car_name):
         self.car = Car(car_name)
         self.speed = 0
-        self.obstacle_detected_distance = 35
+        self.obstacle_detected_distance = 27
 
     def drive_parking(self):
         self.car.drive_parking()
@@ -66,7 +66,7 @@ class myCar(object):
     def assign(self):
         speed = 70
         count = 0
-        stop_condition = 3
+        stop_condition = 2
         vector = numpy.array([-3, -1, 0, 1, 3])
         turning_rate = 12
         before_turning_angle = 0
