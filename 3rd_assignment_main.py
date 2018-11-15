@@ -56,18 +56,9 @@ class myCar(object):
 
         self.move_front(40)
         self.turn(turn_left_angle)
-        while numpy.sum(self.read_digit()) > 0:
-            time.sleep(0.1)
-        while numpy.sum(self.read_digit()) == 0:
-            time.sleep(0.1)
-
+        time.sleep(0.3)
         self.turn(turn_right_angle)
-        while numpy.sum(self.read_digit()) > 0:
-            time.sleep(0.1)
-        while numpy.sum(self.read_digit()) == 0:
-            time.sleep(0.1)
-
-        self.move_front(100)
+        time.sleep(0.3)
         self.turn(turn_left_angle)
 
     # assignment code = move front and back
@@ -94,7 +85,6 @@ class myCar(object):
                         continue
                     self.turn(-before_turning_angle)
                     self.move_back(speed)
-                    before_lines_sum = lines_sum
                     continue
                 before_lines_sum = lines_sum
             if before_lines_sum == 0:
