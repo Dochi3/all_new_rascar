@@ -91,9 +91,10 @@ class myCar(object):
                 count = 0
                 print(lines_sum, before_lines_sum)
                 if lines_sum == 0 and lines_sum != before_lines_sum:
+                    if lines_sum == before_lines_sum:
+                        continue
                     self.turn(before_turning_angle)
                     self.move_back()
-                    print("move_back")
                     before_lines_sum = lines_sum
                     continue
                 before_lines_sum = lines_sum
@@ -111,7 +112,6 @@ class myCar(object):
             if before_turning_angle == turning_angle:
                 continue
             before_turning_angle = turning_angle
-            print(time.time(), turning_angle)
             self.turn(turning_angle)
             
         
