@@ -16,7 +16,7 @@ class myCar(object):
     def __init__(self, car_name):
         self.car = Car(car_name)
         self.speed = 0
-        self.obstacle_detected_distance = 33
+        self.obstacle_detected_distance = 40
 
     def drive_parking(self):
         self.car.drive_parking()
@@ -73,8 +73,9 @@ class myCar(object):
 
     # assignment code = move front and back
     def assign(self):
-        speed = 80
+        speed = 70
         count = 0
+        obstacle_count = 0
         stop_condition = 2
         vector = numpy.array([-3, -1, 0, 1, 3])
         turning_rate = 12
@@ -106,9 +107,12 @@ class myCar(object):
 
             distance = self.get_distance()
             if 0 < distance and distance < self.obstacle_detected_distance:
-                print("evading")
-                self.evading()
-                continue
+                obstacle_count += 1
+                if obstacle_count > 1:
+                    print("evading")
+                    self.evading()
+                    continue
+            obstacle_count = 0
             
             dot = numpy.dot(vector, lines)
             turning_angle = dot * turning_rate / lines_sum if lines_sum else before_turning_angle
