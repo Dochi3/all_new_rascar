@@ -88,11 +88,12 @@ class myCar(object):
                 if lines_sum == 0 and lines_sum != before_lines_sum:
                     self.turn(before_turning_angle)
                     self.move_back()
+                    before_lines_sum = lines_sum
                     continue
-            
-            before_lines_sum = lines_sum
-            
-            self.move_front()
+                before_lines_sum = lines_sum
+            if before_lines_sum == 0:
+                self.move_front()
+
             distance = self.get_distance()
             if 0 < distance and distance < self.obstacle_detected_distance:
                 self.evading()
