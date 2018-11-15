@@ -72,7 +72,7 @@ class myCar(object):
 
     # assignment code = move front and back
     def assign(self):
-        speed = 60
+        speed = 80
         count = 0
         stop_condition = 3
         vector = numpy.array([-3, -1, 0, 1, 3])
@@ -89,7 +89,7 @@ class myCar(object):
                     break
             else:
                 count = 0
-                if lines_sum == 0 and lines_sum != before_lines_sum:
+                if lines_sum == 0:
                     if lines_sum == before_lines_sum:
                         continue
                     self.turn(before_turning_angle)
