@@ -57,15 +57,15 @@ class myCar(object):
 
         self.turn(turn_left_angle)
         while numpy.sum(self.read_digit()) > 0:
-            time.sleep(0.01)
+            time.sleep(0.1)
         while numpy.sum(self.read_digit()) == 0:
-            time.sleep(0.01)
+            time.sleep(0.1)
 
         self.turn(turn_right_angle)
         while numpy.sum(self.read_digit()) > 0:
-            time.sleep(0.01)
+            time.sleep(0.1)
         while numpy.sum(self.read_digit()) == 0:
-            time.sleep(0.01)
+            time.sleep(0.1)
 
         self.turn(turn_left_angle)
 
