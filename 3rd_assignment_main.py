@@ -76,7 +76,7 @@ class myCar(object):
         speed = 75
         count = 0
         obstacle_count = 0
-        stop_condition = 1
+        stop_condition = 4
         evading_condition = 2
         vector = numpy.array([-3, -1, 0, 1, 3])
         turning_rate = 12
