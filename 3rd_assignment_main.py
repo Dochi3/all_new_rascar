@@ -80,7 +80,7 @@ class myCar(object):
         evading_condition = 2
         vector = numpy.array([-3, -1, 0, 1, 3])
         turning_rate = 12
-        before_turning_angle = 0
+        before_turning_angle = -35
         before_lines_sum = 0
         self.move_front(speed)
         self.turn(-35)
