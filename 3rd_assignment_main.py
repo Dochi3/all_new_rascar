@@ -86,7 +86,7 @@ class myCar(object):
         while True:
             lines = self.read_digit()
             lines_sum = numpy.sum(lines)
-            if lines_sum >= 4:
+            if lines_sum >= 5:
                 count += 1
                 if count > stop_condition:
                     break
