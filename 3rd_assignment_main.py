@@ -90,7 +90,6 @@ class myCar(object):
                 count += 1
                 if count > stop_condition:
                     break
-                continue
             else:
                 count = 0
                 is_turning = False
