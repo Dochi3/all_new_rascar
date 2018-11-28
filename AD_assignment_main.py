@@ -50,6 +50,7 @@ class myCar(object):
         degree = max(min_degree, min(max_degree, degree))
         self.car.steering.turn(90 + degree)
 
+    # evading obstacle
     def evading(self):
         turn_left_angle = -23
         turn_right_angle = 23
@@ -70,14 +71,19 @@ class myCar(object):
             time.sleep(0.01)
         self.turn(turn_left_angle)
         time.sleep(0.05)
+    
+    # T parking
+    def T_parking(self):
+        pass
 
-    # assignment code = move front and back
+    # assignment code
     def assign(self):
         speed = 75
         count = 0
         obstacle_count = 0
         stop_condition = 2
         evading_condition = 2
+        evading_count = 0
         vector = numpy.array([-3, -1, 0, 1, 3])
         turning_rate = 12
         before_turning_angle = 0
@@ -104,7 +110,6 @@ class myCar(object):
                 before_lines_sum = lines_sum
                 if is_turning:
                     continue
-            
 
             distance = self.get_distance()
             if distance > 70:
@@ -112,6 +117,7 @@ class myCar(object):
             if 0 < distance and distance < self.obstacle_detected_distance:
                 obstacle_count += 1
                 if obstacle_count > evading_condition:
+                    evading_count += 1
                     obstacle_count = 0
                     print("evading")
                     self.evading()
